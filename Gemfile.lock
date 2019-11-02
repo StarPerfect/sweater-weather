@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/faker-ruby/faker.git
-  revision: 6ae4b0eb7e7386f34f40cf039d6509b470d23f75
+  revision: 7c649e841e943ca2516a57cae6c1028b1fd2f899
   branch: master
   specs:
     faker (2.6.0)
@@ -69,6 +69,8 @@ GEM
       railties (>= 4.2.0)
     faraday (0.17.0)
       multipart-post (>= 1.2, < 3)
+    fast_jsonapi (1.5)
+      activesupport (>= 4.2)
     ffi (1.11.1)
     figaro (1.1.1)
       thor (~> 0.14)
@@ -184,6 +186,7 @@ DEPENDENCIES
   factory_bot_rails
   faker!
   faraday
+  fast_jsonapi
   figaro
   launchy
   listen (>= 3.0.5, < 3.2)
