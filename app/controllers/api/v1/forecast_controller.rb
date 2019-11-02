@@ -1,8 +1,10 @@
 class Api::V1::ForecastController < ApplicationController
   def index
+    location = 'Denver, CO'
+
     geocoding_conn = Faraday.new(
       url: 'https://maps.googleapis.com/',
-      params: { address: 'Denver, CO',
+      params: { address: location,
                 key: ENV['GOOGLE_API_KEY']
               }
       )
@@ -13,10 +15,13 @@ class Api::V1::ForecastController < ApplicationController
 
     @latitude = parsed[:results][0][:geometry][:location][:lat]
     @longitude = parsed[:results][0][:geometry][:location][:lng]
+    @country_location = parsed[:results][0][:formatted_address]
 
     darksky_conn = Faraday.new(url: 'https://api.darksky.net/')
 
     darksky_response = darksky_conn.get("/forecast/#{ENV['DARKSKY_API_KEY']}/#{@latitude},#{@longitude}")
 
+    dark_parsed = JSON.parse(darksky_response.body, symbolize_names: true)
+    binding.pry
   end
 end
