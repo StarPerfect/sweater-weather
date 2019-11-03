@@ -1,28 +1,27 @@
 class Api::V1::ForecastController < ApplicationController
   def index
-    location = 'Denver, CO'
+    geocoding = GoogleApiService.new(location_params)
 
-    geocoding_conn = Faraday.new(
-      url: 'https://maps.googleapis.com/',
-      params: { address: location,
-                key: ENV['GOOGLE_API_KEY']
-              }
-      )
+    darksky = DarkskyApiService.new(geocoding.latitude, geocoding.longitude)
+    dark_parsed = darksky.response
 
-    geo_response = geocoding_conn.get('maps/api/geocode/json')
+    current = CurrentForecast.new(@country_location, dark_parsed)
 
-    parsed = JSON.parse(geo_response.body, symbolize_names: true)
+    daily = dark_parsed[:daily][:data].map do |day|
+      DailyForecast.new(day)
+    end.take(5)
 
-    @latitude = parsed[:results][0][:geometry][:location][:lat]
-    @longitude = parsed[:results][0][:geometry][:location][:lng]
-    @country_location = parsed[:results][0][:formatted_address]
+    hourly = dark_parsed[:hourly][:data].map do |hour|
+      HourlyForecast.new(hour)
+    end.take(8)
+    
+    full_forecast = ForecastFacade.new(current, daily, hourly)
+    render json: ForecastSerializer.new(full_forecast)
+  end
 
-    darksky_conn = Faraday.new(url: 'https://api.darksky.net/')
+  private
 
-    darksky_response = darksky_conn.get("/forecast/#{ENV['DARKSKY_API_KEY']}/#{@latitude},#{@longitude}")
-
-    dark_parsed = JSON.parse(darksky_response.body, symbolize_names: true)
-
-    CurrentForecast.new(@country_location, dark_parsed)
+  def location_params
+    params.permit(:location)
   end
 end
