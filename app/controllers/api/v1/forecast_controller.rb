@@ -22,6 +22,7 @@ class Api::V1::ForecastController < ApplicationController
     darksky_response = darksky_conn.get("/forecast/#{ENV['DARKSKY_API_KEY']}/#{@latitude},#{@longitude}")
 
     dark_parsed = JSON.parse(darksky_response.body, symbolize_names: true)
-    binding.pry
+
+    CurrentForecast.new(@country_location, dark_parsed)
   end
 end
