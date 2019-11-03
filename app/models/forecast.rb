@@ -10,8 +10,8 @@ class Forecast < ApplicationRecord
     @datetime = Time.at(dark_parsed[:currently][:time]
     @high = details[:daily][:data][0][:temperatureHigh]
     @low = details[:daily][:data][0][:temperatureLow]
-    @humidity = 
-    @visibility =
-    @uv_index =
+    @humidity = details[:daily][:data][0][:humidity]
+    @visibility = details[:daily][:data][0][:visibility]
+    @uv_index = details[:daily][:data][0][:uvIndex]
   end
 end
