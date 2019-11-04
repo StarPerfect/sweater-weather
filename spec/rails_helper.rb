@@ -9,8 +9,6 @@ SimpleCov.start 'rails' do
 end
 
 require 'spec_helper'
-require 'faker'
-require 'capybara/rspec'
 ENV['RAILS_ENV'] ||= 'test'
 
 require File.expand_path('../config/environment', __dir__)
