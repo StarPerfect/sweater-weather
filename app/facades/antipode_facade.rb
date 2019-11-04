@@ -4,21 +4,8 @@ class AntipodeFacade
   def initialize(search, antipode, forecast)
     @id = 11
     @type = 'antipode'
-    @search = search
-    @antipode = antipode[:results][0][:address_components][2][:long_name]
-    @forecast = forecast
-    @attributes = {}
+    @search_location = search[:location]
+    @location_name = antipode[:results][0][:address_components][2][:long_name]
+    @forecast = AntipodeForecast.new(forecast)
   end
-
-  def forecast
-    @forecast.map do |data|
-      AntipodeForecast.new(data)
-    end
-    binding.pry
-  end
-
-  def search_location
-    binding.pry
-  end
-
 end
