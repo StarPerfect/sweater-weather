@@ -1,0 +1,17 @@
+language: ruby
+rvm:
+- 2.6.3
+services:
+- postgresql
+script:
+- bundle install
+- bundle exec rake db:create
+- bundle exec rake db:migrate
+- bundle exec rspec
+deploy:
+  provider: heroku
+  api_key:
+    secure: TvQwi+zpeObTW2Qh3EqOCZfY4hQqQpZWy04Vs8Qr7N/4X3qeT5C8hYYYmswaNMKXtE9uY1uw0ZT0LvznK7FSMyBBKL9RhxkEL1QUymed7NZgy8lgMknERAIcaLwi3zi+CDBzUoFADgxoSdDdeWkfmI/IMO8SLOs6eH9CNTohjlYXUDYvoHRExLrj7Dx6N4Ao0muO5zWH83FZIP5s6Hhl9mzdNg8/F/IKON/vbCQrcY84/wbx54W3Fu3yzsbEmYEHbY8NpCzDgByb5mOSxxMrIBbTMSN6IRn5K5v+PYmjiQCUerW9WM3kA/VQIuaoESByvvLEtjERXEWzMZFDhpFDazMaiGbV+sGmUGv/XMZp6wLPQp5aHumDzUJlCEKRq3mfVPUzojUfE+QWQTI8NwqIaMdC8Po7NhvdDMBq6QGjof5j+fV6+joBtNcY7vwIadkGA7zJ0miefOyqkyKHUHiOQcxdbOiagVgSBPntT2nZXGLrWLpqeuCDzv/x2xblup9hgGVMw76e/CQF67gCd08MAWlKzFgI4UiQxUkcN6l5c2FNNIzuLrwwGerUeA2GrMqsXX+gr4eTmiKxMeni5L7EBKQHFg6/vs63XRUMPnXUW5u3FqOPni4OdlTEG96kzgRHEyAN4LJPPf5MRu7IdtwKuXuOUONJioscAghqIY6XLuM=
+app: serene-retreat-31283
+on:
+  repo: StarPerfect/sweater-weather
