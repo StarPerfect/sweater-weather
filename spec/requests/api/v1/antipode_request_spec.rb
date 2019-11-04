@@ -10,5 +10,8 @@ describe 'Antipode Endpoint' do
 
     expect(response.content_type).to eq('application/json')
     expect(parsed_data.class).to eq(Hash)
+    expect(parsed_data[:data].count).to eq(3)
+    expect(parsed_data[:data][:attributes][:search_location]).to eq('hong kong')
+    expect(parsed_data[:data][:attributes][:type]).to eq('antipode')
   end
 end
