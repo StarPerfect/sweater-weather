@@ -4,18 +4,18 @@ class AmypodeApiService
     @longitude = longitude
   end
 
-  # private
+  def get_antipode
+    response = connection.get('/api/v1/antipodes')
+    JSON.parse(response.body, symbolize_names: true)
+  end
 
-  def get_antipode(lat, lng)
-    conn = Faraday.new(
+  private
+
+  def connection
+    Faraday.new(
     url: 'http://amypode.herokuapp.com/',
     headers: {api_key: ENV['AMYPODE_API_KEY']},
-    params: {lat: lat, long: lng}
+    params: {lat: @latitude, long: @longitude}
     )
-    binding.pry
-    response = conn.get('/api/v1/antipodes')
-    binding.pry
-    JSON.parse(response.body, symbolize_names: true)
-    binding.pry
   end
 end
