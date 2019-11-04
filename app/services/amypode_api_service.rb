@@ -9,6 +9,14 @@ class AmypodeApiService
     JSON.parse(response.body, symbolize_names: true)
   end
 
+  def lat
+    get_antipode[:data][:attributes][:lat]
+  end
+
+  def long
+    get_antipode[:data][:attributes][:long]
+  end
+
   private
 
   def connection

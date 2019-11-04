@@ -11,6 +11,12 @@ class GoogleApiService
     get_json(location)[:results][0][:formatted_address]
   end
 
+  def get_city(location)
+    response = connection(location).get('maps/api/geocode/json')
+    JSON.parse(response.body, symbolize_names: true)
+  end
+
+
   private
 
   def get_json(location)
@@ -21,9 +27,8 @@ class GoogleApiService
   def connection(location)
     Faraday.new(
       url: 'https://maps.googleapis.com/',
-      params: { address: location,
-        key: ENV['GOOGLE_API_KEY']
-      }
+      params: { key: ENV['GOOGLE_API_KEY']
+      }.merge(location)
     )
   end
 end
