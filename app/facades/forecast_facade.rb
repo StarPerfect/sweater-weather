@@ -1,5 +1,8 @@
 class ForecastFacade
+  attr_reader :id
+  
   def initialize(location, forecast = {})
+    @id = 13
     @forecast = forecast
     @location = location
   end
