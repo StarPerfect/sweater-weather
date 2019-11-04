@@ -10,13 +10,16 @@ class GoogleApiService
   private
 
   def get_json(location)
-    conn = Faraday.new(
+    response = connection(location).get('maps/api/geocode/json')
+    JSON.parse(response.body, symbolize_names: true)
+  end
+
+  def connection(location)
+    Faraday.new(
       url: 'https://maps.googleapis.com/',
       params: { address: location,
-                key: ENV['GOOGLE_API_KEY']
-              }
-      )
-    response = conn.get('maps/api/geocode/json')
-    JSON.parse(response.body, symbolize_names: true)
+        key: ENV['GOOGLE_API_KEY']
+      }
+    )
   end
 end
