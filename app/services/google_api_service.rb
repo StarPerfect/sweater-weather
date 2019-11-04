@@ -12,8 +12,7 @@ class GoogleApiService
   end
 
   def get_city(location)
-    response = connection(location).get('maps/api/geocode/json')
-    JSON.parse(response.body, symbolize_names: true)
+    get_json(location)
   end
 
 
