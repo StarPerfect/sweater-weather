@@ -4,7 +4,7 @@ class Api::V1::ForecastController < ApplicationController
     darksky = DarkskyApiService.new(geocoding.latitude, geocoding.longitude)
     dark_parsed = darksky.response
     full_forecast = ForecastFacade.new(geocoding.country_location, dark_parsed)
-    render json: SERIALIZER.new(full_forecast)
+    render json: ForecastSerializer.new(full_forecast)
   end
 
   private
