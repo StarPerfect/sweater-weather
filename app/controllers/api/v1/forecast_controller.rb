@@ -1,9 +1,9 @@
 class Api::V1::ForecastController < ApplicationController
   def index
-    geocoding = GoogleApiService.new(location_params)
-    darksky = DarkskyApiService.new(geocoding.latitude, geocoding.longitude)
+    geocoding = GoogleApiService.new
+    darksky = DarkskyApiService.new(geocoding.latitude(location_params), geocoding.longitude(location_params))
     dark_parsed = darksky.response
-    full_forecast = ForecastFacade.new(geocoding.country_location, dark_parsed)
+    full_forecast = ForecastFacade.new(geocoding.country_location(location_params), dark_parsed)
     render json: ForecastSerializer.new(full_forecast)
   end
 

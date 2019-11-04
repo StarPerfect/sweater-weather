@@ -1,10 +1,14 @@
 class GoogleApiService
-  attr_reader :latitude, :longitude, :country_location
+  def latitude(location)
+    get_json(location)[:results][0][:geometry][:location][:lat]
+  end
 
-  def initialize(location)
-    @latitude = get_json(location)[:results][0][:geometry][:location][:lat]
-    @longitude = get_json(location)[:results][0][:geometry][:location][:lng]
-    @country_location = get_json(location)[:results][0][:formatted_address]
+  def longitude(location)
+    get_json(location)[:results][0][:geometry][:location][:lng]
+  end
+
+  def country_location(location)
+    get_json(location)[:results][0][:formatted_address]
   end
 
   private
