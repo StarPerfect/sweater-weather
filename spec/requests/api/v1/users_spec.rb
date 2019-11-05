@@ -3,7 +3,10 @@ require 'rails_helper'
 RSpec.describe "Users", type: :request do
   describe "POST /users" do
     it 'a post request can create a user and sent back an api key' do
-      post '/api/v1/users'
+      post '/api/v1/users', params: { "email": "whatever@example.com",
+                                      "password": "password",
+                                      "password_confirmation": "password"
+                                    }
 
       expect(response).to be_successful
 
@@ -11,6 +14,8 @@ RSpec.describe "Users", type: :request do
 
       expect(response.content_type).to eq('application/json')
       expect(response).to have_http_status(201)
+      expect(response.content_type).to eq('application/json')
+      expect(user_data[:data][:attributes].keys).to eq([:api_key])
     end
   end
 end
