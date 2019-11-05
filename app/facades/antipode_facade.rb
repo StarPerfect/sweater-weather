@@ -4,7 +4,7 @@ class AntipodeFacade
   def initialize(search, antipode, forecast)
     @id = 11
     @type = 'antipode'
-    @location_name = antipode[:results][0][:address_components][2][:long_name]
+    @location_name = antipode.location[:results][0][:address_components][2][:long_name]
     @forecast = AntipodeForecast.new(forecast)
     @search_location = search[:location]
   end
