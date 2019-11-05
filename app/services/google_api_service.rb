@@ -1,18 +1,19 @@
 class GoogleApiService
-  def latitude(location)
-    get_json(location)[:results][0][:geometry][:location][:lat]
+  def initialize(location)
+    @location = get_json(location)
   end
 
-  def longitude(location)
-    get_json(location)[:results][0][:geometry][:location][:lng]
+  def latitude
+    binding.pry
+    @location[:results][0][:geometry][:location][:lat]
   end
 
-  def country_location(location)
-    get_json(location)[:results][0][:formatted_address]
+  def longitude
+    @location[:results][0][:geometry][:location][:lng]
   end
 
-  def get_city(location)
-    get_json(location)
+  def country_location
+    @location[:results][0][:formatted_address]
   end
 
 
