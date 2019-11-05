@@ -1,10 +1,11 @@
 class GoogleApiService
+  attr_reader :location
+  
   def initialize(location)
     @location = get_json(location)
   end
 
   def latitude
-    binding.pry
     @location[:results][0][:geometry][:location][:lat]
   end
 
