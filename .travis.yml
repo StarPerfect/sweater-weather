@@ -11,7 +11,7 @@ script:
 deploy:
   provider: heroku
   api_key:
-    secure: mvSEhGwfst+Pdc9kh6J9ZcF2Ai++W/Qn0S7S3gSzeXagfqARqKaNGHhEDB1SHafYfGQFvZ40924lrNbFtwrdxXn4SYjaWcpyLbvqbPGZ/OwgmTFKh9RwxLCTQRDdeKxoA+Lre9gOiisza4BeAB0iRM2oH0CVaDcoaRpAW1f8DxCQwGu+s71Gheej/sQueYQTf7rgezJ8q83XCXZPA98hizk2C5J0arYtxahnCnk5maKE5IVJ6E/30CJ2qd3siHyKkCZqdzdLkL560u+UiRwDfJeumezLStMWVOdr8P2vbzgTkoAfUOoZzf29kNUl+Co2xb8kSXULl4ObbHrmSB1bGptfBW3xv5ElijFDvKK3ffLElszx7BNpxBu2VAaZKT52A3RT9Hnnf6PTmNcu1T0KhFaeWd2p4G2OH+f+8Wm+P42FQbvrUTyAZ3Em1Yzl+f4X8YaHYf0/I2eV08TzW/9IVd27gbfWIcbchqSOnDcTseq/55VPgPTgEW2ImzaFV84uB+ivKCbGTqsvzpGW0J6GvBEGC8rjyf34lNnUmoxBvw75Hr24YvGk79e3YVyB3+cuBFLr3YlJrpInpZkbOBcHn8LqFwPYBVFNEV0t5DHisRBLafjRppJm+OSfeB0GfRIy4MUbfEDkT97EzNjJwNlkrfioJoi+aDdSlItJKC+ILU4=
+    secure: c9340f74-f8d3-421c-8619-2faad1f48474
 app: serene-retreat-31283
 true:
   repo: StarPerfect/sweater-weather
