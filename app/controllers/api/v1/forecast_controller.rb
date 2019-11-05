@@ -1,7 +1,6 @@
 class Api::V1::ForecastController < ApplicationController
   def index
     google = GoogleApiService.new({address: location_params})
-    binding.pry
     darksky = DarkskyApiService.new(google.latitude, google.longitude)
     full_forecast = ForecastFacade.new(google.country_location, darksky.response)
     render json: ForecastSerializer.new(full_forecast)
