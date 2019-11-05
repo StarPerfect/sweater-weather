@@ -4,8 +4,7 @@ Rails.application.routes.draw do
       resources :forecast, only: [:index]
       resources :antipode, only: [:index]
       resources :backgrounds, only: [:index]
-      resources :users
-      # post 'users', to: 'users#show'
+      post 'users', to: 'users#create'
     end
   end
 end
