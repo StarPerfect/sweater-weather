@@ -51,4 +51,3 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'figaro'
 gem 'faraday'
 gem 'fast_jsonapi'
-gem 'unsplash'
