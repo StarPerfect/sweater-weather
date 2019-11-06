@@ -17,5 +17,8 @@ RSpec.describe 'RoadTrip', type: :request do
 
     expect(response.content_type).to eq('application/json')
     expect(response).to have_http_status(200)
+    expect(parsed_data[:data][:attributes].keys.count).to eq(4)
+    expect(parsed_data[:data][:attributes][:origin]).to eq('Denver,CO')
+    expect(parsed_data[:data][:attributes][:destination]).to eq('Pueblo,CO')
   end
 end
