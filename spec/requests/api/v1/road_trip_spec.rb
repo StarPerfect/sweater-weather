@@ -21,4 +21,25 @@ RSpec.describe 'RoadTrip', type: :request do
     expect(parsed_data[:data][:attributes][:origin]).to eq('Denver,CO')
     expect(parsed_data[:data][:attributes][:destination]).to eq('Pueblo,CO')
   end
+
+  it 'no api key returns 404' do
+    post '/api/v1/road_trip', params: { "origin": "Denver,CO",
+                                        "destination": "Pueblo,CO",
+                                      }
+
+    expect(response).to_not be_successful
+    expect(response.content_type).to eq('application/json')
+    expect(response).to have_http_status(401)
+  end
+
+  it 'invalid api key returns 404' do
+    post '/api/v1/road_trip', params: { "origin": "Denver,CO",
+                                        "destination": "Pueblo,CO",
+                                        'api_key': 123
+                                      }
+
+    expect(response).to_not be_successful
+    expect(response.content_type).to eq('application/json')
+    expect(response).to have_http_status(401)
+  end
 end
