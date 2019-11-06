@@ -4,11 +4,6 @@ class AmypodeApiService
     @longitude = longitude
   end
 
-  def get_antipode
-    response = connection.get('/api/v1/antipodes')
-    JSON.parse(response.body, symbolize_names: true)
-  end
-
   def lat
     get_antipode[:data][:attributes][:lat]
   end
@@ -18,6 +13,10 @@ class AmypodeApiService
   end
 
   private
+  def get_antipode
+    response = connection.get('/api/v1/antipodes')
+    JSON.parse(response.body, symbolize_names: true)
+  end
 
   def connection
     Faraday.new(
