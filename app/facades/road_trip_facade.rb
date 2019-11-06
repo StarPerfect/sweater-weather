@@ -15,7 +15,7 @@ class RoadTripFacade
   def arrival_forecast
     darksky = DarkskyApiService.new(destination_lat, destination_long)
     arrival_time = Time.now.to_i + travel_time_in_minutes
-    AntipodeForecast.new(darksky.future(arrival_time))
+    SimpleForecast.new(darksky.future(arrival_time))
   end
 
   protected
