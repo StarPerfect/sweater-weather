@@ -1,5 +1,5 @@
 class GoogleApiService
-  attr_reader :location
+  attr_reader :location, :endpoint
 
   def initialize(location, endpoint)
     @location = get_json(location, endpoint)
