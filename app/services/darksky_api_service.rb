@@ -9,6 +9,11 @@ class DarkskyApiService
     JSON.parse(json_data.body, symbolize_names: true)
   end
 
+  def future(time)
+    json_data = conn.get("/forecast/#{ENV['DARKSKY_API_KEY']}/#{@latitude},#{@longitude},#{time}")
+    JSON.parse(json_data.body, symbolize_names: true)
+  end
+
   private
 
   def conn
