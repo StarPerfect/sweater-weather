@@ -7,14 +7,14 @@ class RoadTripFacade
     @destination = destination
   end
 
-  def travel_time_in_minutes
+  def travel_time_in_seconds
     direction_data = GoogleApiService.new({origin: @origin, destination: @destination}, 'directions')
     direction_data.location[:routes][0][:legs][0][:duration][:value]
   end
 
   def arrival_forecast
     darksky = DarkskyApiService.new(destination_lat, destination_long)
-    arrival_time = Time.now.to_i + travel_time_in_minutes
+    arrival_time = Time.now.to_i + travel_time_in_seconds
     SimpleForecast.new(darksky.future(arrival_time))
   end
 
