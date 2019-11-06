@@ -1,8 +1,8 @@
 class GoogleApiService
   attr_reader :location
-  
-  def initialize(location)
-    @location = get_json(location)
+
+  def initialize(location, endpoint)
+    @location = get_json(location, endpoint)
   end
 
   def latitude
@@ -20,8 +20,8 @@ class GoogleApiService
 
   private
 
-  def get_json(location)
-    response = connection(location).get('maps/api/geocode/json')
+  def get_json(location, endpoint)
+    response = connection(location).get("maps/api/#{endpoint}/json")
     JSON.parse(response.body, symbolize_names: true)
   end
 
