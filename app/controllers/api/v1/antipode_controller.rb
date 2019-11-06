@@ -1,8 +1,8 @@
 class Api::V1::AntipodeController < ApplicationController
   def index
-    geocoding = GoogleApiService.new({address: search_location})
+    geocoding = GoogleApiService.new({address: search_location}, 'geocode')
     amypode = AmypodeApiService.new(geocoding.latitude, geocoding.longitude)
-    antipode_city = GoogleApiService.new({ latlng: "#{amypode.lat},#{amypode.long}" })
+    antipode_city = GoogleApiService.new({ latlng: "#{amypode.lat},#{amypode.long}" }, 'geocode')
     darksky = DarkskyApiService.new(amypode.lat, amypode.long)
     antipode = AntipodeFacade.new(search_location, antipode_city, darksky.response)
     render json: AntipodeSerializer.new(antipode)
