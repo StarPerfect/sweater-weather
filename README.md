@@ -13,7 +13,7 @@
 
 ## About the Project
 
-* [Project Requirements](https://backend.turing.io/module3/projects/sweater-weather)
+* [Project Requirements](https://backend.turing.io/module3/projects/sweater_weather)
 
 * [GitHub Project Board](https://github.com/StarPerfect/sweater-weather/projects/1)
 
