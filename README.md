@@ -140,16 +140,15 @@ Set up the database
 ```
 $ rake db:create
 $ rake db:migrate
-
 ```
 
 Add the following API Key to your `application.yml` file
 
 ```
-google_geocode: YOUR_GOOGLE_API_KEY
-dark_sky: YOUR_DARK_SKY_API_KEY
-antipode: oscar_the_grouch
-unsplash_access_key: YOUR_UNSPLASH_API_KEY
+GOOGLE_API_KEY: your_google_key
+DARKSKY_API_KEY: your_darksky_key
+AMYPODE_API_KEY: oscar_the_grouch
+UNSPLASH_ACCESS_KEY: your_unsplash_key
 ```
   Where to get API Keys
    * [Google](https://developers.google.com/maps/documentation/javascript/get-api-key)
