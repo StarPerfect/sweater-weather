@@ -17,7 +17,7 @@
 
 * [GitHub Project Board](https://github.com/StarPerfect/sweater-weather/projects/1)
 
- Sweater Weather is a solo project over five days to showcase API consumption and re-exposure. It combines data from the following API's: Google Geocode for location information, Google Directions for road trip details, Unsplash for background images, DarkSky for forecasts, and Amypode for a locations antipode. The application utilizes authorization and authentication through a Postgres database with hashed passwords and api token generation.
+ Sweater Weather is a solo project over five days to showcase API consumption and re-exposure. It combines data from the following API's: Google Geocode for location information, Google Directions for road trip details, Unsplash for background images, DarkSky for forecasts, and Amypode for a location's antipode. The application utilizes authorization and authentication through a Postgres database with hashed passwords and API token generation.
 
 ## Endpoints
 
